@@ -1,5 +1,6 @@
 import { foomGeniusAnswerAbi } from "@/abi/FoomGeniusAnswer";
 import { ContentWithUser } from "@/components/chat";
+import { FoomAvatarImage } from "@/components/foom-avatar-image";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogDescription, DialogTitle, DialogContent, DialogTrigger, DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import axios from "axios";
@@ -56,17 +57,13 @@ const PublishButton = ({ question, answer }: Props) => {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>
-                        Publish Albert's answer and get viral
+                        Publish answer and get viral
                     </DialogTitle>
                     <DialogDescription>
                         Review content and sign the transaction
                     </DialogDescription>
                     <div className="relative">
-                        <img
-                            className="py-4"
-                            src="/avatars/albert-einstein/albert-einstein.png"
-                            alt="Albert Einstein"
-                        />
+                        <FoomAvatarImage name={answer.user} className="py-4" />
                         {isProcessing && (
                             <div className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center">
                                 <LoaderCircleIcon className="animate-spin" />
@@ -81,7 +78,7 @@ const PublishButton = ({ question, answer }: Props) => {
                             </div>
                         )}
                         <div className="absolute bottom-0 left-0 w-full bg-black/50 p-4">
-                            <p>
+                            <p className="text-xs text-muted-foreground">
                                 {answer.text}
                             </p>
                         </div>
