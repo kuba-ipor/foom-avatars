@@ -24,6 +24,7 @@ import { AudioRecorder } from "./audio-recorder";
 import { Badge } from "./ui/badge";
 import { useAutoScroll } from "./ui/chat/hooks/useAutoScroll";
 import PublishButton from "@/components/publish-button";
+import { FoomAvatarImage } from "@/components/foom-avatar-image";
 
 type ExtraContentFields = {
     user: string;
@@ -182,9 +183,6 @@ export default function Page({ agentId }: { agentId: UUID }) {
                 >
                     {transitions((style, message: ContentWithUser, _state, index) => {
                         const variant = getMessageVariant(message?.user);
-                        // console.log({
-                        //     message
-                        // })
                         return (
                             <CustomAnimatedDiv
                                 style={{
@@ -200,8 +198,11 @@ export default function Page({ agentId }: { agentId: UUID }) {
                                     className="flex flex-row items-center gap-2"
                                 >
                                     {message?.user !== "user" ? (
-                                        <Avatar className="size-8 p-1 border rounded-full select-none">
-                                            <AvatarImage src="/elizaos-icon.png" />
+                                        <Avatar className="size-8 border rounded-full select-none">
+                                            <FoomAvatarImage
+                                                name={message.user}
+                                                className="w-full h-full"
+                                            />
                                         </Avatar>
                                     ) : null}
                                     <div className="flex flex-col">

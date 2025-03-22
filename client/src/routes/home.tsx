@@ -12,6 +12,7 @@ import {
 import { apiClient } from "@/lib/api";
 import { NavLink } from "react-router";
 import type { UUID } from "@elizaos/core";
+import { FoomAvatarImage } from "@/components/foom-avatar-image";
 
 export default function Home() {
     const query = useQuery({
@@ -37,7 +38,7 @@ export default function Home() {
                             </CardHeader>
                             <CardContent>
                                 <div className="rounded-md bg-muted aspect-square w-full grid place-items-center">
-                                    <img src={getImage(agent?.name)} alt={agent?.name} />
+                                    <FoomAvatarImage name={agent?.name} />
                                 </div>
                             </CardContent>
                             <CardFooter>
@@ -69,8 +70,4 @@ export default function Home() {
             </div>
         </div>
     );
-}
-
-const getImage = (name: string) => {
-    return `/avatars/${name}/${name}.png`;
 }
