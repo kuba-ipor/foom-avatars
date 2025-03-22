@@ -23,6 +23,7 @@ import type { IAttachment } from "@/types";
 import { AudioRecorder } from "./audio-recorder";
 import { Badge } from "./ui/badge";
 import { useAutoScroll } from "./ui/chat/hooks/useAutoScroll";
+import PublishButton from "@/components/publish-button";
 
 type ExtraContentFields = {
     user: string;
@@ -181,6 +182,9 @@ export default function Page({ agentId }: { agentId: UUID }) {
                 >
                     {transitions((style, message: ContentWithUser) => {
                         const variant = getMessageVariant(message?.user);
+                        // console.log({
+                        //     message
+                        // })
                         return (
                             <CustomAnimatedDiv
                                 style={{
@@ -246,6 +250,9 @@ export default function Page({ agentId }: { agentId: UUID }) {
                                                         agentId={agentId}
                                                         text={message?.text}
                                                     />
+                                                    {variant === 'received' && (
+                                                        <PublishButton />
+                                                    )}
                                                 </div>
                                             ) : null}
                                             <div

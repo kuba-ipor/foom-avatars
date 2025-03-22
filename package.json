@@ -22,7 +22,8 @@
     "docker": "pnpm docker:build && pnpm docker:run && pnpm docker:bash",
     "test": "bash ./scripts/test.sh",
     "smokeTests": "bash ./scripts/smokeTests.sh",
-    "integrationTests": "bash ./scripts/integrationTests.sh"
+    "integrationTests": "bash ./scripts/integrationTests.sh",
+    "foom": "pnpm start --characters='avatars/albert-einstein.json,avatars/nikola-tesla.json,avatars/marie-curie.json,avatars/isaac-newton.json,avatars/socrates.json'"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
