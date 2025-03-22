@@ -51,28 +51,26 @@ export function AppSidebar() {
                     <SidebarGroupLabel>Avatars</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            <div>
-                                {agents?.map(
-                                    (agent: { id: UUID; name: string }) => (
-                                        <SidebarMenuItem key={agent.id}>
-                                            <NavLink
-                                                to={`/chat/${agent.id}`}
+                            {agents?.map(
+                                (agent: { id: UUID; name: string }) => (
+                                    <SidebarMenuItem key={agent.id}>
+                                        <NavLink
+                                            to={`/chat/${agent.id}`}
+                                        >
+                                            <SidebarMenuButton
+                                                isActive={location.pathname.includes(
+                                                    agent.id
+                                                )}
                                             >
-                                                <SidebarMenuButton
-                                                    isActive={location.pathname.includes(
-                                                        agent.id
-                                                    )}
-                                                >
-                                                    <User />
-                                                    <span>
-                                                        {agent.name.charAt(0).toUpperCase() + agent.name.slice(1)}
-                                                    </span>
-                                                </SidebarMenuButton>
-                                            </NavLink>
-                                        </SidebarMenuItem>
-                                    )
-                                )}
-                            </div>
+                                                <User />
+                                                <span>
+                                                    {agent.name.charAt(0).toUpperCase() + agent.name.slice(1)}
+                                                </span>
+                                            </SidebarMenuButton>
+                                        </NavLink>
+                                    </SidebarMenuItem>
+                                )
+                            )}
                         </SidebarMenu>
                     </SidebarGroupContent>
 
