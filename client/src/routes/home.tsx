@@ -12,7 +12,6 @@ import {
 import { apiClient } from "@/lib/api";
 import { NavLink } from "react-router";
 import type { UUID } from "@elizaos/core";
-import { formatAgentName } from "@/lib/utils";
 
 export default function Home() {
     const query = useQuery({
@@ -25,46 +24,53 @@ export default function Home() {
 
     return (
         <div className="flex flex-col gap-4 h-full p-4">
-            <PageTitle title="Agents" />
+            <PageTitle title="Avatars" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {agents?.map((agent: { id: UUID; name: string }) => (
-                    <Card key={agent.id}>
-                        <CardHeader>
-                            <CardTitle>{agent?.name}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <div className="rounded-md bg-muted aspect-square w-full grid place-items-center">
-                                <div className="text-6xl font-bold uppercase">
-                                    {formatAgentName(agent?.name)}
+                {agents?.map((agent: { id: UUID; name: string }) => {
+                    console.log({ agent })
+                    return (
+                        <Card key={agent.id}>
+                            <CardHeader>
+                                <CardTitle>
+                                    {agent?.name.charAt(0).toUpperCase() + agent?.name.slice(1)}
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="rounded-md bg-muted aspect-square w-full grid place-items-center">
+                                    <img src={getImage(agent?.name)} alt={agent?.name} />
                                 </div>
-                            </div>
-                        </CardContent>
-                        <CardFooter>
-                            <div className="flex items-center gap-4 w-full">
-                                <NavLink
-                                    to={`/chat/${agent.id}`}
-                                    className="w-full grow"
-                                >
-                                    <Button
-                                        variant="outline"
+                            </CardContent>
+                            <CardFooter>
+                                <div className="flex items-center gap-4 w-full">
+                                    <NavLink
+                                        to={`/chat/${agent.id}`}
                                         className="w-full grow"
                                     >
-                                        Chat
-                                    </Button>
-                                </NavLink>
-                                <NavLink
-                                    to={`/settings/${agent.id}`}
-                                    key={agent.id}
-                                >
-                                    <Button size="icon" variant="outline">
-                                        <Cog />
-                                    </Button>
-                                </NavLink>
-                            </div>
-                        </CardFooter>
-                    </Card>
-                ))}
+                                        <Button
+                                            variant="outline"
+                                            className="w-full grow"
+                                        >
+                                            Chat
+                                        </Button>
+                                    </NavLink>
+                                    <NavLink
+                                        to={`/settings/${agent.id}`}
+                                        key={agent.id}
+                                    >
+                                        <Button size="icon" variant="outline">
+                                            <Cog />
+                                        </Button>
+                                    </NavLink>
+                                </div>
+                            </CardFooter>
+                        </Card>
+                    )
+                })}
             </div>
         </div>
     );
+}
+
+const getImage = (name: string) => {
+    return `/avatars/${name}/${name}.png`;
 }
