@@ -28,7 +28,6 @@ export default function Home() {
             <PageTitle title="Avatars" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {agents?.map((agent: { id: UUID; name: string }) => {
-                    console.log({ agent })
                     return (
                         <Card key={agent.id}>
                             <CardHeader>

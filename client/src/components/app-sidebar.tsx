@@ -76,7 +76,7 @@ export function AppSidebar() {
                         </SidebarMenu>
                     </SidebarGroupContent>
 
-                    <SidebarGroupLabel>Avatars</SidebarGroupLabel>
+                    <SidebarGroupLabel>Published</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             <SidebarMenuItem>

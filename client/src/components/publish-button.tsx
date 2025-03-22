@@ -34,6 +34,7 @@ const PublishButton = ({ question, answer }: Props) => {
                 question: question.text,
                 message: answer.text,
                 accountAddress: address,
+                avatarName: answer.user,
             });
         } catch (error) {
             setIsError(true);

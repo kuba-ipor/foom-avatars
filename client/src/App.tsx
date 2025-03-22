@@ -19,6 +19,7 @@ import {
 import { WagmiProvider } from 'wagmi';
 import { anvil } from 'wagmi/chains';
 import Navbar from "@/components/navbar";
+import Video from "@/routes/videos";
 
 const customAnvil = {
     ...anvil,
@@ -73,6 +74,10 @@ function App() {
                                                 <Route
                                                     path="settings/:agentId"
                                                     element={<Overview />}
+                                                />
+                                                <Route
+                                                    path="videos"
+                                                    element={<Video />}
                                                 />
                                             </Routes>
                                         </div>
