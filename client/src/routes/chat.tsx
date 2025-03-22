@@ -7,5 +7,16 @@ export default function AgentRoute() {
 
     if (!agentId) return <div>No data.</div>;
 
-    return <Chat agentId={agentId} />;
+    return (
+        <div className="grid grid-cols-2">
+            <div className="border-r border-border">
+                <img 
+                    src="/avatars/albert-einstein/albert-einstein-9-16.png" 
+                    alt="Albert Einstein"
+                    className="w-full h-full object-cover" 
+                />
+            </div>
+            <Chat agentId={agentId} />
+        </div>
+    );
 }
