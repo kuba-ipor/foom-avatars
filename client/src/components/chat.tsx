@@ -53,7 +53,7 @@ export default function Page({ agentId }: { agentId: UUID }) {
     const { scrollRef, isAtBottom, scrollToBottom, disableAutoScroll } = useAutoScroll({
         smooth: true,
     });
-   
+
     useEffect(() => {
         scrollToBottom();
     }, [queryClient.getQueryData(["messages", agentId])]);
@@ -76,12 +76,12 @@ export default function Page({ agentId }: { agentId: UUID }) {
 
         const attachments: IAttachment[] | undefined = selectedFile
             ? [
-                  {
-                      url: URL.createObjectURL(selectedFile),
-                      contentType: selectedFile.type,
-                      title: selectedFile.name,
-                  },
-              ]
+                {
+                    url: URL.createObjectURL(selectedFile),
+                    contentType: selectedFile.type,
+                    title: selectedFile.name,
+                },
+            ]
             : undefined;
 
         const newMessages = [
@@ -174,13 +174,13 @@ export default function Page({ agentId }: { agentId: UUID }) {
     return (
         <div className="flex flex-col w-full h-[calc(100dvh)] p-4">
             <div className="flex-1 overflow-y-auto">
-                <ChatMessageList 
+                <ChatMessageList
                     scrollRef={scrollRef}
                     isAtBottom={isAtBottom}
                     scrollToBottom={scrollToBottom}
                     disableAutoScroll={disableAutoScroll}
                 >
-                    {transitions((style, message: ContentWithUser) => {
+                    {transitions((style, message: ContentWithUser, _state, index) => {
                         const variant = getMessageVariant(message?.user);
                         // console.log({
                         //     message
@@ -241,7 +241,7 @@ export default function Page({ agentId }: { agentId: UUID }) {
                                         </ChatBubbleMessage>
                                         <div className="flex items-center gap-4 justify-between w-full mt-1">
                                             {message?.text &&
-                                            !message?.isLoading ? (
+                                                !message?.isLoading ? (
                                                 <div className="flex items-center gap-1">
                                                     <CopyButton
                                                         text={message?.text}
@@ -251,7 +251,10 @@ export default function Page({ agentId }: { agentId: UUID }) {
                                                         text={message?.text}
                                                     />
                                                     {variant === 'received' && (
-                                                        <PublishButton message={message} />
+                                                        <PublishButton
+                                                            question={messages[index - 1]}
+                                                            answer={message}
+                                                        />
                                                     )}
                                                 </div>
                                             ) : null}

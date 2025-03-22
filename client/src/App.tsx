@@ -17,15 +17,22 @@ import {
     RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import {
-    base,
-} from 'wagmi/chains';
+import { anvil } from 'wagmi/chains';
 import Navbar from "@/components/navbar";
+
+const customAnvil = {
+    ...anvil,
+    rpcUrls: {
+        default: {
+            http: ["http://127.0.0.1:8546"],
+        },
+    },
+};
 
 const config = getDefaultConfig({
     appName: 'Foom Avatars',
     projectId: 'YOUR_PROJECT_ID',
-    chains: [base],
+    chains: [customAnvil],
     ssr: false,
 });
 
