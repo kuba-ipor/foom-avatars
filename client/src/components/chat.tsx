@@ -31,7 +31,7 @@ type ExtraContentFields = {
     isLoading?: boolean;
 };
 
-type ContentWithUser = Content & ExtraContentFields;
+export type ContentWithUser = Content & ExtraContentFields;
 
 type AnimatedDivProps = AnimatedProps<{ style: React.CSSProperties }> & {
     children?: React.ReactNode;
@@ -251,7 +251,7 @@ export default function Page({ agentId }: { agentId: UUID }) {
                                                         text={message?.text}
                                                     />
                                                     {variant === 'received' && (
-                                                        <PublishButton />
+                                                        <PublishButton message={message} />
                                                     )}
                                                 </div>
                                             ) : null}
