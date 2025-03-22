@@ -21,7 +21,7 @@ export default function Video() {
   return (
     <div className="flex flex-col gap-4 h-full p-4">
       <PageTitle title="Published videos" />
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="flex gap-4">
         {videos?.map(({ comments, likes, viewCount, videoId }) => {
           return (
             <Card key={videoId}>
