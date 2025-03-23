@@ -3,6 +3,7 @@ import { ContentWithUser } from "@/components/chat";
 import { FoomAvatarImage } from "@/components/foom-avatar-image";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogDescription, DialogTitle, DialogContent, DialogTrigger, DialogHeader, DialogFooter } from "@/components/ui/dialog";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 import axios from "axios";
 import { CircleXIcon, LoaderCircleIcon } from "lucide-react";
 import { useState } from "react";
@@ -20,6 +21,7 @@ const PublishButton = ({ question, answer }: Props) => {
     const { address } = useAccount();
     const [isProcessing, setIsProcessing] = useState(false);
     const [isError, setIsError] = useState(false);
+    const { connectModalOpen, openConnectModal } = useConnectModal();
 
     const handlePublish = async () => {
         setIsProcessing(true);
@@ -38,6 +40,7 @@ const PublishButton = ({ question, answer }: Props) => {
                 avatarName: answer.user,
             });
         } catch (error) {
+            console.error({ error });
             setIsError(true);
         } finally {
             setIsProcessing(false);
@@ -45,7 +48,7 @@ const PublishButton = ({ question, answer }: Props) => {
     };
 
     return (
-        <Dialog>
+        <Dialog modal={connectModalOpen}>
             <DialogTrigger asChild>
                 <Button
                     variant="outline"
@@ -84,16 +87,25 @@ const PublishButton = ({ question, answer }: Props) => {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button
-                            variant="default"
-                            onClick={handlePublish}
-                            disabled={isProcessing}
-                        >   
-                            {isProcessing && (
-                                <LoaderCircleIcon className="animate-spin" />
-                            )}
-                            Confirm and publish
-                        </Button>
+                        {address ? (
+                            <Button
+                                variant="default"
+                                onClick={handlePublish}
+                                disabled={isProcessing}
+                            >
+                                {isProcessing && (
+                                    <LoaderCircleIcon className="animate-spin" />
+                                )}
+                                Confirm and publish
+                            </Button>
+                        ) : (
+                            <Button
+                                variant="default"
+                                onClick={openConnectModal}
+                            >
+                                Connect wallet
+                            </Button>
+                        )}
                     </DialogFooter>
                 </DialogHeader>
             </DialogContent>
