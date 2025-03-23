@@ -73,6 +73,15 @@ Our vision is to create the ultimate platform for historical figure reincarnatio
 - Animation & Voice: HeyGen for talking head generation and voice synthesis
 - Web3: viem, wagmi, RainbowKit for wallet integration
 
+## 🪙 Smart Contracts
+
+Our platform utilizes two main smart contracts:
+
+- `GeniusToken`: ERC20 token used for content publishing and verification
+- `FoomGeniusAnswer`: Manages content verification and publishing system
+
+See [smart contracts repo](https://github.com/kuba-ipor/foom-avatars-contracts)
+
 ## 🎮 Features in Development
 
 - Real-time voice and video conversations with historical figures
