@@ -75,16 +75,38 @@ Our vision is to create the ultimate platform for historical figure reincarnatio
 
 ## 🎮 Features in Development
 
-- More historical figures and personalities
-- Advanced animation capabilities
-- Community curation system
-- Mobile app
-- Integration with social media platforms
+- Real-time voice and video conversations with historical figures
+- Battle Mode: Watch and vote as historical figures debate trending topics
+- Enhanced token economy with engagement rewards and creator incentives
+- Expanded roster of historical personalities
+- Multi-platform support for TikTok, Instagram Reels, YouTube Shorts, etc.
+- Mobile app for on-the-go interactions
+- Advanced animation and real-time rendering capabilities
+
+## ❓ Questions and Challenges
+
+### Content Authenticity
+- How to verify content is genuinely created by our historical figure avatars
+- Implementing on-chain proof of creation for each interaction
+- Creating a transparent verification system for historical figure authenticity
+- Preventing impersonation and unauthorized use of historical personas
+- Building trust in the platform's content generation process
+
+### Technical Challenges
+- Maintaining historical accuracy while allowing creative interactions
+- Scaling real-time video generation and voice synthesis
+- Optimizing token economics for sustainable creator rewards
+- Managing high-concurrency during battle mode events
+
+### Ethical Considerations
+- Ensuring respectful representation of historical figures
+- Balancing entertainment with historical authenticity
+- Content moderation for user-generated interactions
+
+### Future Exploration
+- Decentralized governance for community-driven development
+- AI model fine-tuning for more authentic historical personalities
 
 ## 🤝 Contributing
 
 This is a hackathon project built during Spring Hack. We welcome contributions to make history more interactive and engaging!
-
-## 📄 License
-
-MIT
